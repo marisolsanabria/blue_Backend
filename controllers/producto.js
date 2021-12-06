@@ -25,7 +25,8 @@ const Producto = require('../models/producto')
 */
 
 exports.getProductos = (req, res) => {
-    Producto.find({author:req.userData.userId}).then((productoResult) => {
+    //Producto.find({author:req.userData.userId}).then((productoResult) => {
+    Producto.find().then((productoResult) => {
       res.status(200).json(productoResult);
     });
   };
@@ -38,7 +39,7 @@ exports.addProducto = (req, res) => {
         categoria: req.body.categoria,
         cantidad: req.body.cantidad,
         precio:req.body.precio,
-        author: req.userData.userId,
+       // author: req.userData.userId,
     });
   
     productAdd.save().then((createdProduct) => {
@@ -55,10 +56,11 @@ exports.updateProducto = (req,res) => {
     categoria: req.body.categoria,
     cantidad: req.body.cantidad,
     precio:req.body.precion,
-    uthor: req.userData.userId,
+   // author: req.userData.userId,
   });
 
-  Producto.updateOne({_id: req.params.id, author:req.userData.userId }, producto).then((result) => {
+ // Producto.updateOne({_id: req.params.id, author:req.userData.userId }, producto).then((result) => {
+  Producto.updateOne({_id: req.params.id}, producto).then((result) => {
     if(result.modifiedCount >0){
       res.status(200).json({ message: "Actualización exitosa" });
     }else{
@@ -70,7 +72,8 @@ exports.updateProducto = (req,res) => {
 }
 
 exports.deleteProducto = (req, res) => {
-    Producto.deleteOne({_id: req.params.id,author:req.userData.userId}).then((result) => {
+   // Producto.deleteOne({_id: req.params.id,author:req.userData.userId}).then((result) => {
+      Producto.deleteOne({_id: req.params.id}).then((result) => {
       if (result.deletedCount > 0) {
         res.status(200).json({ message: "Producto eliminado" });
       } else {
