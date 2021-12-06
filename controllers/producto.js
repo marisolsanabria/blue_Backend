@@ -48,7 +48,7 @@ exports.addProducto = (req, res) => {
     });
   };
 
-exports.updateProducto = (req,res) => {
+/*exports.updateProducto = (req,res) => {
     const id = req.params.id;
   const producto = new Producto({
     _id:id,
@@ -70,6 +70,23 @@ exports.updateProducto = (req,res) => {
   });
    
 }
+*/
+exports.updateProducto = (req,res) => {
+  const id = req.params.id;
+const producto = new Producto({
+  _id:id,
+  nombre: req.body.nombre,
+  categoria: req.body.categoria,
+  cantidad: req.body.cantidad,
+  precio:req.body.precion
+});
+
+Producto.updateOne({_id: req.params.id }, producto).then((result) => {
+  console.log(result);
+  res.status(200).json({ message: "Actualización exitosa" });
+});
+};
+ 
 
 exports.deleteProducto = (req, res) => {
    // Producto.deleteOne({_id: req.params.id,author:req.userData.userId}).then((result) => {
@@ -88,8 +105,8 @@ exports.getProducto = (req, res) => {
   Producto.findById(id).then((result) =>{
   console.log(result);
   res.status(200).json(result);
-  })
-}
+  });
+};
 
 
 
