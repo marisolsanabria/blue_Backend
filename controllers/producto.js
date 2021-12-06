@@ -100,12 +100,12 @@ exports.deleteProducto = (req, res) => {
   };
 
 exports.getProducto = (req, res) => {
-  const id = req.params.id;
-
+  const id = req.params.id
   Producto.findById(id).then((result) =>{
   console.log(result);
   res.status(200).json(result);
   });
+  //s
 };
 
 
