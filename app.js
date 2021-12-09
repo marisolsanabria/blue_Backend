@@ -5,6 +5,7 @@ const mongoose=require("mongoose");
 
 const productoRoutes= require("./routes/producto");
 const userRoutes= require("./routes/user");
+require('dotenv').config()
 
 //import de las routes 
 
@@ -14,7 +15,7 @@ app.use(cors());
 
 // Configuración de la conexión a la bd
 mongoose.connect(
-    'mongodb+srv://marisolsanabria:Sanabria0000@cluster0.umcah.mongodb.net/blue?retryWrites=true&w=majority'
+    process.env.DB_CONNECT
     ).then(()=>{
         console.log('Base de datos conectada');
     }).catch(()=>{
