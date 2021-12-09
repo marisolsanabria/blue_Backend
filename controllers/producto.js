@@ -25,7 +25,7 @@ const Producto = require('../models/producto')
 */
 
 exports.getProductos = (req, res) => {
-    //Producto.find({author:req.userData.userId}).then((productoResult) => {
+   // Producto.find({author:req.userData.userId}).then((productoResult) => {
     Producto.find().then((productoResult) => {
       res.status(200).json(productoResult);
     });
@@ -39,7 +39,7 @@ exports.addProducto = (req, res) => {
         categoria: req.body.categoria,
         cantidad: req.body.cantidad,
         precio:req.body.precio,
-       // author: req.userData.userId,
+        author: req.userData.userId,
     });
   
     productAdd.save().then((createdProduct) => {
@@ -48,7 +48,7 @@ exports.addProducto = (req, res) => {
     });
   };
 
-/*exports.updateProducto = (req,res) => {
+exports.updateProducto = (req,res) => {
     const id = req.params.id;
   const producto = new Producto({
     _id:id,
@@ -56,11 +56,11 @@ exports.addProducto = (req, res) => {
     categoria: req.body.categoria,
     cantidad: req.body.cantidad,
     precio:req.body.precion,
-   // author: req.userData.userId,
+    author: req.userData.userId,
   });
 
- // Producto.updateOne({_id: req.params.id, author:req.userData.userId }, producto).then((result) => {
-  Producto.updateOne({_id: req.params.id}, producto).then((result) => {
+  Producto.updateOne({_id: req.params.id, author:req.userData.userId }, producto).then((result) => {
+   //Producto.updateOne({_id: req.params.id}, producto).then((result) => {
     if(result.modifiedCount >0){
       res.status(200).json({ message: "Actualización exitosa" });
     }else{
@@ -70,8 +70,8 @@ exports.addProducto = (req, res) => {
   });
    
 }
-*/
-exports.updateProducto = (req,res) => {
+
+/*exports.updateProducto = (req,res) => {
   const id = req.params.id;
 const producto = new Producto({
   _id:id,
@@ -86,11 +86,12 @@ Producto.updateOne({_id: req.params.id }, producto).then((result) => {
   res.status(200).json({ message: "Actualización exitosa" });
 });
 };
+*/
  
 
 exports.deleteProducto = (req, res) => {
-   // Producto.deleteOne({_id: req.params.id,author:req.userData.userId}).then((result) => {
-      Producto.deleteOne({_id: req.params.id}).then((result) => {
+    Producto.deleteOne({_id: req.params.id,author:req.userData.userId}).then((result) => {
+      //Producto.deleteOne({_id: req.params.id}).then((result) => {
       if (result.deletedCount > 0) {
         res.status(200).json({ message: "Producto eliminado" });
       } else {
@@ -105,7 +106,7 @@ exports.getProducto = (req, res) => {
   console.log(result);
   res.status(200).json(result);
   });
-  //s
+  
 };
 
 
