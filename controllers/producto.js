@@ -55,7 +55,7 @@ exports.updateProducto = (req,res) => {
     nombre: req.body.nombre,
     categoria: req.body.categoria,
     cantidad: req.body.cantidad,
-    precio:req.body.precion,
+    precio:req.body.precio,
     author: req.userData.userId,
   });
 
