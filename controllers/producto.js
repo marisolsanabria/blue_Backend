@@ -25,8 +25,8 @@ const Producto = require('../models/producto')
 */
 
 exports.getProductos = (req, res) => {
-   // Producto.find({author:req.userData.userId}).then((productoResult) => {
-    Producto.find().then((productoResult) => {
+   Producto.find({author:req.userData.userId}).then((productoResult) => {
+   // Producto.find().then((productoResult) => {
       res.status(200).json(productoResult);
     });
   };
