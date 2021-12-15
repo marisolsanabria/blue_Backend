@@ -2,6 +2,11 @@
 
 Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
+## AVANCE
+
+
+![](https://github.com/marisolsanabria/blue_backend/blob/main/Blue%20demostraci%C3%B3n%20(1).gif)
+
 ## Integrantes, roles y funciones
 
 |              Nombre               |     Rol      |                                                                                     Funciones                                                                                      |
